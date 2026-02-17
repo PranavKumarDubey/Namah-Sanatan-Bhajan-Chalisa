@@ -11,7 +11,8 @@ export const useCategoryData = (categoryName) => {
     'chalisa-sangrah': 'chalisa.json',
     'bhajan': 'bhajan.json',
     'mantra': 'mantra.json',
-    'stotram': 'strot.json' // ✅ Fixed: using strot.json as per your API
+    'stotram': 'strot.json',
+    'kawach': 'kawach.json' // ✅ ADDED
   };
 
   const endpoint = endpointMap[categoryName] || 'aarti.json';
@@ -25,4 +26,4 @@ export const useChalisa = () => useFetch('chalisa.json');
 export const useBhajan = () => useFetch('bhajan.json');
 export const useMantra = () => useFetch('mantra.json');
 export const useStotram = () => useFetch('strot.json');
-export const useKawach = () => useFetch('kawach.json');
+export const useKawach = () => useFetch('kawach.json'); 

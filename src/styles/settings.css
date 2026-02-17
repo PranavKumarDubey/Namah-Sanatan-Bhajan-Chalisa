@@ -1,0 +1,113 @@
+/* Theme Variables */
+:root[data-theme="light"] {
+  --bg-primary: #fff7ed;
+  --bg-secondary: #ffffff;
+  --text-primary: #1f2937;
+  --text-secondary: #6b7280;
+  --border-color: #fed7aa;
+  --accent-orange: #fb923c;
+  --accent-gradient: linear-gradient(135deg, #fb923c 0%, #f59e0b 100%);
+}
+
+:root[data-theme="dark"] {
+  --bg-primary: #1f2937;
+  --bg-secondary: #374151;
+  --text-primary: #f9fafb;
+  --text-secondary: #d1d5db;
+  --border-color: #4b5563;
+  --accent-orange: #fb923c;
+  --accent-gradient: linear-gradient(135deg, #fb923c 0%, #f59e0b 100%);
+}
+
+:root[data-theme="auto"] {
+  --bg-primary: #fff7ed;
+  --bg-secondary: #ffffff;
+  --text-primary: #1f2937;
+  --text-secondary: #6b7280;
+  --border-color: #fed7aa;
+  --accent-orange: #fb923c;
+  --accent-gradient: linear-gradient(135deg, #fb923c 0%, #f59e0b 100%);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root[data-theme="auto"] {
+    --bg-primary: #1f2937;
+    --bg-secondary: #374151;
+    --text-primary: #f9fafb;
+    --text-secondary: #d1d5db;
+    --border-color: #4b5563;
+    --accent-orange: #fb923c;
+    --accent-gradient: linear-gradient(135deg, #fb923c 0%, #f59e0b 100%);
+  }
+}
+
+/* ✅ REDUCED Font Size Variables - Smaller across all settings */
+:root[data-font-size="small"] {
+  --font-base: 13px;   /* Was 14px → Now 13px */
+  --font-sm: 11px;     /* Was 12px → Now 11px */
+  --font-lg: 15px;     /* Was 16px → Now 15px */
+  --font-xl: 17px;     /* Was 18px → Now 17px */
+  --font-2xl: 20px;    /* Was 22px → Now 20px */
+  --font-3xl: 26px;    /* Was 28px → Now 26px */
+}
+
+:root[data-font-size="medium"] {
+  --font-base: 15px;   /* Was 16px → Now 15px */
+  --font-sm: 13px;     /* Was 14px → Now 13px */
+  --font-lg: 17px;     /* Was 18px → Now 17px */
+  --font-xl: 19px;     /* Was 20px → Now 19px */
+  --font-2xl: 22px;    /* Was 24px → Now 22px */
+  --font-3xl: 30px;    /* Was 32px → Now 30px */
+}
+
+:root[data-font-size="large"] {
+  --font-base: 17px;   /* Was 18px → Now 17px */
+  --font-sm: 15px;     /* Was 16px → Now 15px */
+  --font-lg: 19px;     /* Was 20px → Now 19px */
+  --font-xl: 21px;     /* Was 22px → Now 21px */
+  --font-2xl: 26px;    /* Was 28px → Now 26px */
+  --font-3xl: 34px;    /* Was 36px → Now 34px */
+}
+
+/* Apply to body */
+body {
+  font-size: var(--font-base);
+  color: var(--text-primary);
+  background-color: var(--bg-primary);
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+/* Background Classes */
+.bg-theme-primary {
+  background-color: var(--bg-primary);
+}
+
+.bg-theme-secondary {
+  background-color: var(--bg-secondary);
+}
+
+/* Text Classes */
+.text-theme-primary {
+  color: var(--text-primary);
+}
+
+.text-theme-secondary {
+  color: var(--text-secondary);
+}
+
+/* Border Classes */
+.border-theme {
+  border-color: var(--border-color);
+}
+
+/* Card Styles */
+.card-theme {
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
+  border-color: var(--border-color);
+}
+
+/* Gradient for headers */
+.bg-gradient-theme {
+  background: var(--accent-gradient);
+}

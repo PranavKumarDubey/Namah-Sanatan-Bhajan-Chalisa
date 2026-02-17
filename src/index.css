@@ -1,8 +1,105 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import './styles/settings.css';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-
 ::-webkit-scrollbar {
   display: none;
+}
+
+/* Base Font Settings */
+* {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  letter-spacing: -0.011em;
+}
+
+/* ✅ REDUCED Font Size Classes - Smaller across all settings */
+html.font-size-small,
+html.font-size-small body {
+  font-size: 13px;  /* Was 14px → Now 13px */
+  line-height: 1.5;
+}
+
+html.font-size-medium,
+html.font-size-medium body {
+  font-size: 15px;  /* Was 16px → Now 15px */
+  line-height: 1.5;
+}
+
+html.font-size-large,
+html.font-size-large body {
+  font-size: 17px;  /* Was 18px → Now 17px */
+  line-height: 1.6;
+}
+
+/* Headings - matching screenshot style with reduced sizes */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+/* ✅ Small Font Size - Reduced */
+html.font-size-small h1 { 
+  font-size: 26px;  /* Was 28px → Now 26px */
+  font-weight: 700;
+}
+html.font-size-small h2 { 
+  font-size: 20px;  /* Was 22px → Now 20px */
+  font-weight: 700;
+}
+html.font-size-small h3 { 
+  font-size: 17px;  /* Was 18px → Now 17px */
+  font-weight: 600;
+}
+
+/* ✅ Medium Font Size - Reduced */
+html.font-size-medium h1 { 
+  font-size: 30px;  /* Was 32px → Now 30px */
+  font-weight: 700;
+}
+html.font-size-medium h2 { 
+  font-size: 22px;  /* Was 24px → Now 22px */
+  font-weight: 700;
+}
+html.font-size-medium h3 { 
+  font-size: 19px;  /* Was 20px → Now 19px */
+  font-weight: 600;
+}
+
+/* ✅ Large Font Size - Reduced */
+html.font-size-large h1 { 
+  font-size: 34px;  /* Was 36px → Now 34px */
+  font-weight: 700;
+}
+html.font-size-large h2 { 
+  font-size: 26px;  /* Was 28px → Now 26px */
+  font-weight: 700;
+}
+html.font-size-large h3 { 
+  font-size: 21px;  /* Was 22px → Now 21px */
+  font-weight: 600;
+}
+
+/* Button and UI text */
+button {
+  font-weight: 600;
+  letter-spacing: -0.011em;
+}
+
+/* Navigation text */
+nav a, nav button {
+  font-weight: 500;
+  letter-spacing: -0.011em;
 }

@@ -106,7 +106,7 @@ export const CATEGORIES_CONFIG = {
     icon: '📖',
     color: 'from-blue-500 to-teal-500',
     iconColor: 'text-blue-200',
-    apiEndpoint: 'strot.json', // ✅ API endpoint
+    apiEndpoint: 'strot.json',
     headerImages: [
       {
         url: 'https://images.unsplash.com/photo-1532012197267-da84d127e765?w=1200&q=80',
@@ -117,6 +117,31 @@ export const CATEGORIES_CONFIG = {
         url: 'https://images.unsplash.com/photo-1519682337058-a94d519337bc?w=1200&q=80',
         deity: 'Divine Verses',
         mantra: 'स्तोत्रं देवानां'
+      }
+    ]
+  },
+
+  // ✅ NEW: Kawach Configuration
+  "kawach": {
+    key: 'kawach',
+    displayName: 'Kawach',
+    title: 'Kawach',
+    hindiName: 'कवच',
+    subtitle: 'कवच',
+    icon: '🛡️',
+    color: 'from-indigo-500 to-purple-600',
+    iconColor: 'text-indigo-200',
+    apiEndpoint: 'kawach.json',
+    headerImages: [
+      {
+        url: 'https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?w=1200&q=80',
+        deity: 'Divine Protection',
+        mantra: 'ॐ रक्षा रक्षा महाकवचे'
+      },
+      {
+        url: 'https://images.unsplash.com/photo-1604948501466-4e9c339b9c24?w=1200&q=80',
+        deity: 'Sacred Shield',
+        mantra: 'ॐ शरणागतं रक्ष'
       }
     ]
   }

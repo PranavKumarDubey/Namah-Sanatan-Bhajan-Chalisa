@@ -1,9 +1,10 @@
 import Display from "../components/Display";
-import CircularCardContent from '../components/CircularCardsPage/CircularCardContent';
-import SquareCardsContent from '../components/SquareCardsPage/SquareCardsContent';
-import BhajanVideosPage from '../components/BhajanVideos/BhajanVideosPage';
-import Favourites from '../components/pages/Favourites';
-import Settings from '../components/pages/Settings';
+import SquareCardsContent from '../pages/SquareCardsPage/SquareCardsContent';
+import BhajanVideosPage from '../pages/BhajanVideosPage/BhajanVideosPage';
+import Favourites from '../pages/FavouritesPage';
+import Settings from '../pages/SettingsPage';
+import PrayerDetailPage from "../pages/PrayerDetailPage";
+import CircularCardsPage from '../pages/CircularCardsPage/CircularCardsPage'; // ✅ ADD THIS LINE
 
 export const routes = [
   {
@@ -12,9 +13,8 @@ export const routes = [
     label: "Home"
   },
   {
-    path: "/deity/:deityName",
-    component: CircularCardContent,
-    label: "Deity"
+    path: '/deity/:deityName',
+    component: CircularCardsPage  // ✅ NOW IT WILL WORK
   },
   {
     path: "/category/:categoryName",
@@ -35,5 +35,9 @@ export const routes = [
     path: "/settings",
     component: Settings,
     label: "Settings"
+  },
+  {
+    path: '/prayer/:prayerId/:category',    
+    component: PrayerDetailPage
   }
 ];

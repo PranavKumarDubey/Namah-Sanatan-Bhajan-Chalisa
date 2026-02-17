@@ -1,4 +1,4 @@
-// ✅ COMPLETE FIX FOR DUPLICATION BUG
+// 👑 COMPLETE FIX FOR DUPLICATION BUG
 
 /**
  * Deduplicate items by checking title + deity combination
@@ -35,7 +35,7 @@ export const isFavourite = (itemId, categoryType) => {
       '{"bhajans":[],"aartis":[],"chalisas":[],"mantras":[],"strots":[],"kawachs":[],"videos":[]}'
     );
     
-    // ✅ Map category types to storage keys
+    // 👑 Map category types to storage keys
     const typeMap = {
       'bhajan': 'bhajans',
       'aarti': 'aartis',
@@ -52,7 +52,7 @@ export const isFavourite = (itemId, categoryType) => {
     const typeKey = typeMap[categoryType?.toLowerCase()] || 'aartis';
     const itemIdStr = String(itemId);
     
-    // ✅ Search in the specific category
+    // 👑 Search in the specific category
     return favourites[typeKey]?.some(fav => String(fav.id) === itemIdStr) || false;
   } catch (error) {
     console.error('Error checking favourite:', error);
@@ -71,7 +71,7 @@ export const toggleFavourite = (item, categoryType) => {
       '{"bhajans":[],"aartis":[],"chalisas":[],"mantras":[],"strots":[],"kawachs":[],"videos":[]}'
     );
     
-    // ✅ Map category types to storage keys
+    // 👑 Map category types to storage keys
     const typeMap = {
       'bhajan': 'bhajans',
       'aarti': 'aartis',
@@ -93,29 +93,41 @@ export const toggleFavourite = (item, categoryType) => {
       return false;
     }
     
-    // ✅ Check if item exists in ANY category by title + deity
+    // 👑 Check if item exists in ANY category by title + deity
     const existsInAny = checkIfExistsInAnyCategory(item.title, item.deity, favourites);
     
     if (!existsInAny) {
-      // ✅ Add to the appropriate category
+      // 👑 Add to the appropriate category
       favourites[typeKey] = favourites[typeKey] || [];
-      favourites[typeKey].push({
+      
+      // ✅✅ UPDATED: Save COMPLETE prayer data for all items
+      const favouriteItem = {
         id: itemIdStr,
         title: item.title,
         artist: item.artist || 'Traditional',
         deity: item.deity || null,
         type: categoryType,
         image: item.image || null,
-        lyrics_preview: item.lyrics_preview || null,
-        addedAt: new Date().toISOString()
-      });
+        addedAt: new Date().toISOString(),
+        
+        // ✅ CRITICAL FIX: Save full content for ALL types
+        content: item.content || item.lyrics_preview || '',
+        audio_url: item.audio_url || null,
+        video_id: item.video_id || null,
+        subtitle: item.subtitle || null,
+        lang: item.lang || null,
+        tags: item.tags || null,
+        lyrics_preview: item.lyrics_preview || null  // Keep for backward compatibility
+      };
       
-      // ✅ Deduplicate before saving
+      favourites[typeKey].push(favouriteItem);
+      
+      // 👑 Deduplicate before saving
       favourites[typeKey] = deduplicateItems(favourites[typeKey]);
       localStorage.setItem('favourites', JSON.stringify(favourites));
       return true;
     } else {
-      // ✅ Remove from ALL categories by title + deity
+      // 👑 Remove from ALL categories by title + deity
       const title = (item.title || '').toLowerCase().trim();
       const deity = (item.deity || '').toLowerCase().trim();
       

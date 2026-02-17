@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Play, Heart, Eye, Clock, ChevronLeft, ChevronRight, Sparkles, Flame, Loader, ArrowLeft } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import { useTheme } from '../../context/ThemeContext';
 import useFetch from '../../hooks/useFetch';
 
 // ✅ Updated favourites utilities - matching Favourites.jsx structure
@@ -49,6 +50,8 @@ const isVideoFavourite = (id) => {
 
 const BhajanVideosPage = () => {
   const navigate = useNavigate();
+  const { isDarkMode, theme, fontSize, colors } = useTheme();
+  
   const [likedVideos, setLikedVideos] = useState(new Set());
   const [organizedVideos, setOrganizedVideos] = useState([]);
   const [allVideos, setAllVideos] = useState([]);
@@ -311,7 +314,7 @@ const BhajanVideosPage = () => {
         </div>
       </div>
     );
-  }
+  };
 
   // ✅ No Videos State
   if (!organizedVideos || organizedVideos.length === 0) {
@@ -326,45 +329,48 @@ const BhajanVideosPage = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-orange-50 via-amber-50 to-yellow-50 p-3 sm:p-4 md:p-6">
-      {/* Compact Header - Matching Favourites Page */}
-      <div className="relative bg-gradient-to-r from-orange-600 via-red-600 to-yellow-600 text-white py-4 sm:py-5 md:py-6 px-4 sm:px-6 overflow-hidden rounded-2xl sm:rounded-3xl border-2 sm:border-4 border-orange-400 shadow-xl sm:shadow-2xl mb-6 sm:mb-8">
-        {/* Back Arrow Button */}
-        <button
-          onClick={handleBackClick}
-          className="absolute top-2 left-2 sm:top-3 sm:left-3 z-20 bg-white/80 backdrop-blur-sm p-1.5 sm:p-2 rounded-full shadow-md hover:bg-white transition-all active:scale-95"
-          aria-label="Go back to home"
-        >
-          <ArrowLeft className="w-5 h-5 sm:w-6 sm:h-6 text-orange-600" />
-        </button>
+    <div className="min-h-screen bg-gradient-to-b from-orange-50 via-amber-50 to-yellow-50 pb-20 md:pb-0 transition-colors duration-500">
+      
+      <div className="px-3 sm:px-4 md:px-6 pt-3 sm:pt-4 md:pt-6">
+        {/* ✅ Header - Matching Favourites and Settings pages exactly */}
+        <div className="relative bg-gradient-to-r from-orange-500 via-orange-600 to-yellow-500 text-white py-4 sm:py-5 md:py-6 px-4 sm:px-6 overflow-hidden rounded-2xl sm:rounded-3xl border-2 sm:border-4 border-orange-400 shadow-xl sm:shadow-2xl transition-all duration-500 mb-6 sm:mb-8">
+          {/* Back Arrow Button */}
+          <button
+            onClick={handleBackClick}
+            className="absolute top-2 left-2 sm:top-3 sm:left-3 z-20 bg-white/80 backdrop-blur-sm p-1.5 sm:p-2 rounded-full shadow-md hover:bg-white transition-all active:scale-95"
+            aria-label="Go back to home"
+          >
+            <ArrowLeft className="w-5 h-5 sm:w-6 sm:h-6 text-orange-600" />
+          </button>
 
-        {/* Decorative background patterns */}
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-2 sm:top-4 left-4 sm:left-8">
-            <Sparkles className="w-5 h-5 sm:w-6 md:w-8 sm:h-6 md:h-8" />
+          {/* Decorative background patterns */}
+          <div className="absolute inset-0 opacity-10">
+            <div className="absolute top-2 sm:top-4 left-4 sm:left-8">
+              <Sparkles className="w-5 h-5 sm:w-6 md:w-8 sm:h-6 md:h-8" />
+            </div>
+            <div className="absolute top-3 sm:top-6 right-6 sm:right-12">
+              <Flame className="w-4 h-4 sm:w-6 md:w-8 sm:h-6 md:h-8" />
+            </div>
           </div>
-          <div className="absolute top-3 sm:top-6 right-6 sm:right-12">
-            <Flame className="w-4 h-4 sm:w-6 md:w-8 sm:h-6 md:h-8" />
-          </div>
-        </div>
 
-        <div className="relative z-10 max-w-6xl mx-auto text-center">
-          <div className="flex items-center justify-center mb-2 sm:mb-3">
-            <Play className="w-7 h-7 sm:w-8 md:w-10 sm:h-8 md:h-10 mr-2 sm:mr-3 animate-pulse" />
-            <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold drop-shadow-2xl">
-              Bhajan Videos
-            </h1>
-            <Sparkles className="w-7 h-7 sm:w-8 md:w-10 sm:h-8 md:h-10 ml-2 sm:ml-3 animate-pulse" />
+          <div className="relative z-10 max-w-6xl mx-auto text-center">
+            <div className="flex items-center justify-center mb-2 sm:mb-3">
+              <Play className="w-7 h-7 sm:w-8 md:w-10 sm:h-8 md:h-10 mr-2 sm:mr-3 animate-pulse" />
+              <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold drop-shadow-2xl">
+                Bhajan Videos
+              </h1>
+              <Sparkles className="w-7 h-7 sm:w-8 md:w-10 sm:h-8 md:h-10 ml-2 sm:ml-3 animate-pulse" />
+            </div>
+            <p className="text-base sm:text-lg md:text-xl text-yellow-100 font-semibold mb-2">
+              भजन वीडियो संग्रह
+            </p>
+            <p className="text-xs sm:text-sm md:text-base text-white/90 max-w-2xl mx-auto px-4">
+              Watch divine bhajans, devotional songs and spiritual videos
+            </p>
+            <p className="text-xs sm:text-sm text-white/80 mt-2">
+              📊 {allVideos.length} videos • 💖 {likedVideos.size} favourites
+            </p>
           </div>
-          <p className="text-base sm:text-lg md:text-xl text-yellow-100 font-semibold mb-2">
-            भजन वीडियो संग्रह
-          </p>
-          <p className="text-xs sm:text-sm md:text-base text-white/90 max-w-2xl mx-auto px-4">
-            Watch divine bhajans, devotional songs and spiritual videos
-          </p>
-          <p className="text-xs sm:text-sm text-white/80 mt-2">
-            📊 {allVideos.length} videos • 💖 {likedVideos.size} favourites
-          </p>
         </div>
       </div>
 
@@ -417,6 +423,7 @@ const BhajanVideosPage = () => {
                   key={video.id}
                   className="group flex-shrink-0 snap-start w-[260px] sm:w-[280px] md:w-[320px]"
                 >
+                  {/* ✅ Card - Only Light Mode Classes */}
                   <div className="relative bg-white rounded-xl sm:rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden h-full">
                     {/* Thumbnail */}
                     <div 
