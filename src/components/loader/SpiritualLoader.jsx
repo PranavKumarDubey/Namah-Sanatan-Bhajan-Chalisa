@@ -1,7 +1,7 @@
 // SpiritualLoader.jsx
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
-import "./spiritualLoader.css";
+import "./SpiritualLoader.css";
 
 export default function spiritualLoader() {
   const loaderRef = useRef(null);
