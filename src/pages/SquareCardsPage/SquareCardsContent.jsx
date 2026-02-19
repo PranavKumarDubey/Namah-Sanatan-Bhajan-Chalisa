@@ -1,7 +1,7 @@
 // Add this at the top with other imports
 import { useParams, useNavigate } from "react-router-dom";
 import React, { useState, useEffect } from 'react';
-import { ArrowLeft, ChevronLeft, ChevronRight, Loader2, Heart, Download, Smartphone, BookOpen, Music, Shield, Sparkles, Flame, ScrollText } from 'lucide-react';
+import { ArrowLeft, ChevronLeft, ChevronRight, Loader, Heart, Download, Smartphone, BookOpen, Music, Shield, Sparkles, Flame, ScrollText } from 'lucide-react';
 import { useTheme } from "../../context/ThemeContext";
 import { useCategoryData } from "../../hooks/useCategoryHooks";
 import { getCategoryByKey } from '../../config/categories';
@@ -23,8 +23,6 @@ const SquareCardsContent = () => {
     window.open(PLAY_STORE_URL, '_blank', 'noopener,noreferrer');
   };
 
-  // ... rest of your existing code (fetch data, helpers, etc.) ...
-  
   // Fetch data from API
   const { data: apiData, loading, error } = useCategoryData(categoryName);
 
@@ -166,20 +164,20 @@ const SquareCardsContent = () => {
     }
   };
 
-  // Loading State
+  // ✅ Loading State - BhajanVideosPage jaisa
   if (loading) {
     return (
-      <div className={`min-h-screen flex items-center justify-center transition-colors duration-500 ${
-        isDarkMode 
-          ? 'bg-gradient-to-b from-slate-900 to-slate-800' 
-          : 'bg-gradient-to-b from-orange-50 to-amber-50'
+      <div className={`min-h-screen w-full flex items-center justify-center transition-colors duration-500 ${
+        isDarkMode
+          ? 'bg-gradient-to-b from-slate-900 to-slate-800'
+          : 'bg-gradient-to-b from-orange-50 via-amber-50 to-yellow-50'
       }`}>
         <div className="text-center">
-          <Loader2 className={`w-12 h-12 animate-spin mx-auto mb-4 ${
+          <Loader className={`w-12 h-12 animate-spin mx-auto mb-4 ${
             isDarkMode ? 'text-purple-500' : 'text-orange-600'
           }`} />
           <p className={`text-lg ${isDarkMode ? 'text-gray-300' : 'text-gray-600'}`}>
-            Loading {displayName}...
+            Loading {displayName || 'Prayers'}...
           </p>
         </div>
       </div>

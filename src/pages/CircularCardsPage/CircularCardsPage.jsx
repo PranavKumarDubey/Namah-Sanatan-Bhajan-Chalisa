@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import { Loader } from 'lucide-react'; // ✅ Added Loader import
 import { useTheme } from '../../context/ThemeContext';
 import DeityHeader from '../../components/layouts/DeityHeader';
 import PrayersSection from '../../components/layouts/PrayersSection';
@@ -34,7 +35,6 @@ const CircularCardsPage = () => {
 
   // ✅ Process data when all hooks have loaded
   useEffect(() => {
-    // Check if all data is loaded
     const allLoading = aartiLoading || chalisaLoading || bhajanLoading || 
                        mantraLoading || strotLoading || kawachLoading;
     
@@ -43,7 +43,6 @@ const CircularCardsPage = () => {
       return;
     }
 
-    // Check for errors
     const errors = [aartiError, chalisaError, bhajanError, mantraError, strotError, kawachError].filter(Boolean);
     if (errors.length > 0) {
       setError(errors[0]);
@@ -51,7 +50,6 @@ const CircularCardsPage = () => {
       return;
     }
 
-    // Process all data
     const deityVariants = getDeityVariants(deityName);
     const combinedPrayers = [];
 
@@ -103,18 +101,18 @@ const CircularCardsPage = () => {
     }));
   };
 
-  // ✅ Loading State with Dark Mode
+  // ✅ Updated Loading State - Using Loader icon like BhajanVideosPage
   if (loading) {
     return (
       <div className={`min-h-screen w-full flex items-center justify-center transition-colors duration-500 ${
         isDarkMode 
           ? 'bg-gradient-to-b from-slate-900 to-slate-800' 
-          : 'bg-gradient-to-b from-orange-50 to-amber-50'
+          : 'bg-gradient-to-b from-orange-50 via-amber-50 to-yellow-50'
       }`}>
         <div className="text-center">
-          <div className={`animate-spin rounded-full h-16 w-16 border-b-4 mx-auto mb-4 ${
-            isDarkMode ? 'border-purple-500' : 'border-orange-500'
-          }`}></div>
+          <Loader className={`w-12 h-12 animate-spin mx-auto mb-4 ${
+            isDarkMode ? 'text-purple-500' : 'text-orange-600'
+          }`} />
           <p className={`text-lg ${isDarkMode ? 'text-gray-300' : 'text-gray-600'}`}>
             Loading prayers...
           </p>
@@ -123,13 +121,13 @@ const CircularCardsPage = () => {
     );
   }
 
-  // ✅ Error State with Dark Mode
+  // ✅ Error State
   if (error) {
     return (
       <div className={`min-h-screen w-full flex items-center justify-center transition-colors duration-500 ${
         isDarkMode 
           ? 'bg-gradient-to-b from-slate-900 to-slate-800' 
-          : 'bg-gradient-to-b from-orange-50 to-amber-50'
+          : 'bg-gradient-to-b from-orange-50 via-amber-50 to-yellow-50'
       }`}>
         <div className="text-center px-4 max-w-2xl">
           <div className={`rounded-lg p-6 mb-4 ${
@@ -165,11 +163,10 @@ const CircularCardsPage = () => {
     <div className={`min-h-screen w-full transition-colors duration-500 ${
       isDarkMode 
         ? 'bg-gradient-to-b from-slate-900 to-slate-800' 
-        : 'bg-gradient-to-b from-orange-50 to-amber-50'
+        : 'bg-gradient-to-b from-orange-50 via-amber-50 to-yellow-50'
     }`}>
       <div className="w-full max-w-7xl mx-auto pb-6 sm:pb-8 lg:pb-10">
         
-        {/* ✅ Use DeityHeader Component */}
         <DeityHeader 
           deity={{
             name: formatDeityName(deityName),
@@ -178,7 +175,6 @@ const CircularCardsPage = () => {
           deityImage={deityImage}
         />
         
-        {/* ✅ Use PrayersSection Component */}
         <PrayersSection
           prayers={allPrayers}
           favorites={favorites}

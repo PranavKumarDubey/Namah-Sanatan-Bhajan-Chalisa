@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useTheme } from '../context/ThemeContext';
+import { Smartphone } from 'lucide-react';
 
 import SquareCards from '../pages/SquareCardsPage/SquareCards';
 import SpiritualFooter from './SpiritualFooter';
@@ -43,20 +44,19 @@ const Display = () => {
     sanataniThoughts[Math.floor(Math.random() * sanataniThoughts.length)]
   );
 
-  const handleInstallApp = () => {
-    console.log('Installing app...');
-  };
+  // ✅ Namah App Download Link
+  const PLAY_STORE_URL = 'https://play.google.com/store/apps/details?id=com.vstech.vire.namah&pcampaignid=web_share';
 
-  const handleBellClick = () => {
-    console.log('Bell rung! 🔔');
+  const handleInstallApp = () => {
+    window.open(PLAY_STORE_URL, '_blank', 'noopener,noreferrer');
   };
 
   return (
     <div className="flex-1 bg-gradient-to-br from-orange-50 via-yellow-50 to-orange-100 p-5 min-h-screen">
-      {/* ✅ Greeting Card - Only Light Mode Classes */}
+      {/* ✅ Greeting Card */}
       <div className="relative bg-white rounded-3xl shadow-xl border border-orange-200 overflow-visible mb-20 backdrop-blur-sm bg-opacity-95">
         
-        {/* ✅ Header - Only Light Mode Classes (ThemeContext will convert) */}
+        {/* ✅ Header */}
         <div className="bg-gradient-to-r from-orange-500 via-orange-600 to-yellow-500 p-4 text-white rounded-t-3xl">
           <div className="flex items-center justify-between">
             <div>
@@ -68,18 +68,20 @@ const Display = () => {
               </p>
             </div>
             <div className="text-right">
+              {/* ✅ Install App Button - Lucide Smartphone Icon + Namah Link */}
               <button 
                 onClick={handleInstallApp}
-                className="bg-white/20 hover:bg-white/30 backdrop-blur-sm border border-white/30 text-white px-5 py-2 rounded-full font-semibold text-sm transition-all duration-300 hover:scale-105 shadow-lg"
+                className="flex items-center gap-2 bg-white/20 hover:bg-white/30 backdrop-blur-sm border border-white/30 text-white px-5 py-2 rounded-full font-semibold text-sm transition-all duration-300 hover:scale-105 shadow-lg"
                 style={{fontFamily: "'Libre Baskerville', serif"}}
               >
-                📱 Install App
+                <Smartphone className="w-4 h-4" />
+                Install App
               </button>
             </div>
           </div>
         </div>
 
-        {/* ✅ Inspirational Quote Section - Only Light Mode Classes */}
+        {/* ✅ Inspirational Quote Section */}
         <div className="p-5 bg-gradient-to-r from-orange-50 to-yellow-50 rounded-b-3xl">
           <div className="flex items-start space-x-3">
             <div className="text-xl text-orange-600 flex-shrink-0">
@@ -100,14 +102,13 @@ const Display = () => {
           </div>
         </div>
 
-        {/* ✅ Left Bell - Only Light Mode Classes */}
+        {/* ✅ Left Bell - Sound removed, only visual */}
         <div className="absolute bottom-0 left-8 transform translate-y-full z-10">
           <div className="flex flex-col items-center">
             <div className="w-0.5 h-4 bg-gradient-to-b from-orange-400 to-amber-700"></div>
             
             <div 
-              onClick={handleBellClick}
-              className="relative cursor-pointer transform hover:scale-110 transition-all duration-300"
+              className="relative"
               style={{
                 animation: 'swingLeft 3s ease-in-out infinite',
                 transformOrigin: 'top center'
@@ -131,14 +132,13 @@ const Display = () => {
           </div>
         </div>
 
-        {/* ✅ Right Bell - Only Light Mode Classes */}
+        {/* ✅ Right Bell - Sound removed, only visual */}
         <div className="absolute bottom-0 right-8 transform translate-y-full z-10">
           <div className="flex flex-col items-center">
             <div className="w-0.5 h-4 bg-gradient-to-b from-orange-400 to-amber-700"></div>
             
             <div 
-              onClick={handleBellClick}
-              className="relative cursor-pointer transform hover:scale-110 transition-all duration-300"
+              className="relative"
               style={{
                 animation: 'swingRight 3s ease-in-out infinite 0.5s',
                 transformOrigin: 'top center'
@@ -163,7 +163,7 @@ const Display = () => {
         </div>
       </div>
 
-     <CircularCardsItems/>
+      <CircularCardsItems/>
       <SquareCards/>
       <SpiritualFooter/>
       
