@@ -3,7 +3,7 @@ import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import "./spiritualLoader.css";
 
-export default function SpiritualLoader() {
+export default function spiritualLoader() {
   const loaderRef = useRef(null);
   const lotusRef = useRef(null);
   const omRef = useRef(null);
