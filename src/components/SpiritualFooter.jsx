@@ -4,13 +4,13 @@ import { Heart, Sparkles, Download, Smartphone } from 'lucide-react';
 
 const SpiritualFooter = () => {
   const { isDarkMode } = useTheme();
-  
+
   const PLAY_STORE_URL = 'https://play.google.com/store/apps/details?id=com.vstech.vire.namah&pcampaignid=web_share';
-  
+
   const handleDownload = () => {
     window.open(PLAY_STORE_URL, '_blank', 'noopener,noreferrer');
   };
-  
+
   return (
     <footer className="relative bg-gradient-to-r from-orange-500 via-orange-600 to-yellow-500 text-white overflow-hidden transition-all duration-500 pb-24 md:pb-0">
       {/* Decorative Background Pattern */}
@@ -44,11 +44,11 @@ const SpiritualFooter = () => {
               </h2>
               <Sparkles className="w-6 h-6 sm:w-7 sm:h-7 text-yellow-200" />
             </div>
-            
+
             <p className="text-sm sm:text-base text-orange-100 font-semibold max-w-2xl mx-auto px-4">
               Your spiritual companion for devotional prayers, bhajans, and divine blessings
             </p>
-            
+
             <p className="text-xs sm:text-sm text-yellow-200 italic font-light">
               आपका आध्यात्मिक साथी • भक्ति और प्रार्थना का संग्रह
             </p>
@@ -56,7 +56,7 @@ const SpiritualFooter = () => {
 
           {/* App Download Section */}
           <div className="max-w-md mx-auto">
-            <button 
+            <button
               onClick={handleDownload}
               className="w-full bg-white/20 hover:bg-white/30 backdrop-blur-sm border-2 border-yellow-300/50 hover:border-yellow-200 rounded-2xl px-6 py-4 transition-all duration-300 transform hover:scale-105 active:scale-95 shadow-xl hover:shadow-2xl group"
             >
@@ -103,15 +103,15 @@ const SpiritualFooter = () => {
               </p>
               <Heart className="w-4 h-4 text-red-300 fill-current" />
             </div>
-            
+
             <p className="text-xs text-orange-200">
-              © 2025 Namah. All rights reserved.
+              © 2026 Namah. All rights reserved.
             </p>
-            
+
             {/* ✅ Fixed: Naam alag line mein, clean spacing */}
-          <p className="text-xs text-yellow-200 font-light">
-  Developed by{' '}<span className="font-normal">Pranav</span>
-</p>
+            <p className="text-xs text-yellow-200 font-light">
+              <span className="font-normal">Pranav Dubey</span>
+            </p>
             <p className="text-xs text-orange-200 font-light">
               VSTech Solutions
             </p>
