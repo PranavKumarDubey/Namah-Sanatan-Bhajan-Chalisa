@@ -110,7 +110,7 @@ const SpiritualFooter = () => {
             
             {/* ✅ Fixed: Naam alag line mein, clean spacing */}
           <p className="text-xs text-yellow-200 font-light">
-  Developed by{' '}<span className="font-normal">Pranav Dubey</span>
+  Developed by{' '}<span className="font-normal">Pranav</span>
 </p>
             <p className="text-xs text-orange-200 font-light">
               VSTech Solutions
