@@ -5,7 +5,6 @@ import { Heart, Sparkles, Download, Smartphone } from 'lucide-react';
 const SpiritualFooter = () => {
   const { isDarkMode } = useTheme();
   
-  // Play Store URL
   const PLAY_STORE_URL = 'https://play.google.com/store/apps/details?id=com.vstech.vire.namah&pcampaignid=web_share';
   
   const handleDownload = () => {
@@ -13,7 +12,7 @@ const SpiritualFooter = () => {
   };
   
   return (
-    <footer className="relative bg-gradient-to-r from-orange-500 via-orange-600 to-yellow-500 text-white overflow-hidden transition-all duration-500 pb-20 md:pb-0">
+    <footer className="relative bg-gradient-to-r from-orange-500 via-orange-600 to-yellow-500 text-white overflow-hidden transition-all duration-500 pb-24 md:pb-0">
       {/* Decorative Background Pattern */}
       <div className="absolute inset-0 opacity-10">
         <div className="absolute top-4 left-8">
@@ -26,7 +25,7 @@ const SpiritualFooter = () => {
         <div className="absolute bottom-6 right-1/3 text-2xl">✨</div>
       </div>
 
-      <div className="relative z-10 container mx-auto px-4 sm:px-6 py-8 sm:py-10">
+      <div className="relative z-10 container mx-auto px-4 sm:px-6 py-6 sm:py-10">
         {/* Top Decorative Border */}
         <div className="flex items-center justify-center mb-6">
           <div className="h-px bg-gradient-to-r from-transparent via-yellow-300 to-transparent w-full max-w-md"></div>
@@ -35,7 +34,7 @@ const SpiritualFooter = () => {
         </div>
 
         {/* Main Content - Centered */}
-        <div className="text-center space-y-6">
+        <div className="text-center space-y-4 sm:space-y-6">
           {/* App Name & Tagline */}
           <div className="space-y-3">
             <div className="flex items-center justify-center gap-3">
@@ -91,12 +90,12 @@ const SpiritualFooter = () => {
           </div>
 
           {/* Divider */}
-          <div className="flex items-center justify-center my-6">
+          <div className="flex items-center justify-center my-3 sm:my-6">
             <div className="h-px bg-gradient-to-r from-transparent via-orange-300 to-transparent w-full max-w-lg"></div>
           </div>
 
           {/* Copyright & Credits */}
-          <div className="space-y-2">
+          <div className="space-y-1 sm:space-y-2 pb-2">
             <div className="flex items-center justify-center gap-2">
               <Heart className="w-4 h-4 text-red-300 fill-current" />
               <p className="text-sm text-orange-100">
@@ -109,8 +108,12 @@ const SpiritualFooter = () => {
               © 2025 Namah. All rights reserved.
             </p>
             
-            <p className="text-xs text-yellow-200 font-light">
-              Developed by Pranav Dubey | VSTech Solutions
+            {/* ✅ Fixed: Naam alag line mein, clean spacing */}
+          <p className="text-xs text-yellow-200 font-light">
+  Developed by{' '}<span className="font-normal">Pranav Dubey</span>
+</p>
+            <p className="text-xs text-orange-200 font-light">
+              VSTech Solutions
             </p>
           </div>
         </div>
@@ -122,4 +125,4 @@ const SpiritualFooter = () => {
   );
 };
 
-export default SpiritualFooter; 
+export default SpiritualFooter;
